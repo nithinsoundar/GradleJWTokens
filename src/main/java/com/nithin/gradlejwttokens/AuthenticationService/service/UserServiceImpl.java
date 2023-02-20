@@ -6,10 +6,12 @@ import com.nithin.gradlejwttokens.AuthenticationService.repository.UserRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.nithin.gradlejwttokens.AuthenticationService.config.PasswordUtils.encodePassword;
+
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository){
@@ -22,7 +24,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByNameAndPassword(String name, String password) throws UserNotFoundException {
-        User user = userRepository.findByUserNameAndPassword(name, password);
+        password = encodePassword(password);
+        User user = userRepository.findByUsernameAndPassword(name, password);
         if(user == null){
             throw new UserNotFoundException("Invalid id and password");
         }
