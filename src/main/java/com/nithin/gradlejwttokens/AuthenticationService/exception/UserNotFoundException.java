@@ -1,8 +1,13 @@
 package com.nithin.gradlejwttokens.AuthenticationService.exception;
 
-public class UserNotFoundException extends Exception {
+public class UserNotFoundException extends Exception{
 
-    public UserNotFoundException(String exception) {
-        System.out.println(exception);
+    private String message;
+
+    public UserNotFoundException(String message){
+        super(message);
+        this.message=message;
     }
+
+    public UserNotFoundException() {}
 }
