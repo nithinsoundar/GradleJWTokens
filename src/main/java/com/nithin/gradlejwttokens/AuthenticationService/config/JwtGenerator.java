@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class JwtGeneratorImpl {
+public class JwtGenerator {
 
     private static final String SECRET_KEY =
             "6A576E5A7234753778214125442A472D4B6150645367556B5870327335763879";
