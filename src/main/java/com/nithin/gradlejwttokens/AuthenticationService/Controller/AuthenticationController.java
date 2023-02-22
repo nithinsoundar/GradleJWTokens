@@ -1,12 +1,8 @@
 package com.nithin.gradlejwttokens.AuthenticationService.Controller;
 
-import com.nithin.gradlejwttokens.AuthenticationService.AuthenticationConfig.JwtFilter;
-import com.nithin.gradlejwttokens.AuthenticationService.AuthenticationConfig.SecurityConfiguration;
-import com.nithin.gradlejwttokens.AuthenticationService.Model.LoginCreds;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,9 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/blog")
 public class AuthenticationController {
 
-    /*private SecurityConfiguration securityConfiguration;
-    Authentication authentication = securityConfiguration.getAuthentication();
-    String username = authentication.getName();*/
     @GetMapping("/unrestricted")
     public ResponseEntity<?> getMessage() {
         return new ResponseEntity<>("Hello, this is an unrestricted message.", HttpStatus.OK);
