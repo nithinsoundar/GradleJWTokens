@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -17,9 +19,15 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/user/**").permitAll()
-                .anyRequest().permitAll();
+                .requestMatchers("/api/v1/user/**", "/api/v1/blog/unrestricted").permitAll()
+                .anyRequest().permitAll()
+                /*.requestMatchers("/api/v1/blog/restricted").hasRole("ADMIN")*/;
         return http.build();
     }
 
+
+    /*@Bean
+    public Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
+    }*/
 }

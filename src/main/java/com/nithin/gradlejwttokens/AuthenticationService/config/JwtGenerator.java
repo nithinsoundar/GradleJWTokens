@@ -1,6 +1,6 @@
 package com.nithin.gradlejwttokens.AuthenticationService.config;
 
-import com.nithin.gradlejwttokens.AuthenticationService.User.LoginCreds;
+import com.nithin.gradlejwttokens.AuthenticationService.Model.LoginCreds;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -19,20 +19,22 @@ public class JwtGenerator {
     private static final String SECRET_KEY =
             "6A576E5A7234753778214125442A472D4B6150645367556B5870327335763879";
 
-    @Value("${app.jwttoken.message}")
+    @Value("${app.token.message}")
     private String message;
 
     public Map<String, String> generateToken(LoginCreds loginCreds) {
-        String jwtToken="";
-        jwtToken = Jwts.builder().setSubject(loginCreds.getUsername())
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("username", loginCreds.getUsername());
+        claims.put("role", loginCreds.getRole());
+        String jwtToken = Jwts.builder().setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
                 .signWith(SignatureAlgorithm.HS256, getSignInKey())
                 .compact();
-        Map<String, String> jwtTokenGen = new HashMap<>();
-        jwtTokenGen.put("token", jwtToken);
-        jwtTokenGen.put("message", message);
-        return jwtTokenGen;
+        Map<String, String> jwTokenGen = new HashMap<>();
+        jwTokenGen.put("token", jwtToken);
+        jwTokenGen.put("message", message);
+        return jwTokenGen;
 
 
     }

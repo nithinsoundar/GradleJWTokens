@@ -1,6 +1,6 @@
 package com.nithin.gradlejwttokens.AuthenticationService.service;
 
-import com.nithin.gradlejwttokens.AuthenticationService.User.User;
+import com.nithin.gradlejwttokens.AuthenticationService.Model.User;
 import com.nithin.gradlejwttokens.AuthenticationService.exception.UserNotFoundException;
 import com.nithin.gradlejwttokens.AuthenticationService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

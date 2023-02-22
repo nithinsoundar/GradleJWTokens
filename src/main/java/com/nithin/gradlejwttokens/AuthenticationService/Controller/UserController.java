@@ -1,7 +1,7 @@
 package com.nithin.gradlejwttokens.AuthenticationService.Controller;
 
-import com.nithin.gradlejwttokens.AuthenticationService.User.LoginCreds;
-import com.nithin.gradlejwttokens.AuthenticationService.User.User;
+import com.nithin.gradlejwttokens.AuthenticationService.Model.LoginCreds;
+import com.nithin.gradlejwttokens.AuthenticationService.Model.User;
 import com.nithin.gradlejwttokens.AuthenticationService.config.JwtGenerator;
 import com.nithin.gradlejwttokens.AuthenticationService.exception.UserNotFoundException;
 import com.nithin.gradlejwttokens.AuthenticationService.service.UserService;

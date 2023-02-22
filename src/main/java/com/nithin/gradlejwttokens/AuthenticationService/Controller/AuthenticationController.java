@@ -1,25 +1,30 @@
 package com.nithin.gradlejwttokens.AuthenticationService.Controller;
 
-import com.nithin.gradlejwttokens.AuthenticationService.User.LoginCreds;
+import com.nithin.gradlejwttokens.AuthenticationService.AuthenticationConfig.JwtFilter;
+import com.nithin.gradlejwttokens.AuthenticationService.AuthenticationConfig.SecurityConfiguration;
+import com.nithin.gradlejwttokens.AuthenticationService.Model.LoginCreds;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.sql.RowSet;
-
 @RestController
-@RequestMapping("api/v1/blog")
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/blog")
 public class AuthenticationController {
-    public LoginCreds loginCreds;
+
+    /*private SecurityConfiguration securityConfiguration;
+    Authentication authentication = securityConfiguration.getAuthentication();
+    String username = authentication.getName();*/
     @GetMapping("/unrestricted")
     public ResponseEntity<?> getMessage() {
-        LoginCreds logincreds = new LoginCreds();
-        return new ResponseEntity<>("Hello "+ logincreds.getUsername(), HttpStatus.OK);
+        return new ResponseEntity<>("Hello, this is an unrestricted message.", HttpStatus.OK);
     }
     @GetMapping("/restricted")
-    public ResponseEntity<?> getRestrictedMessage() {
-        return new ResponseEntity<>("This is a restricted message", HttpStatus.OK);
+    public ResponseEntity<?> getRestrictedMessage(String username) {
+        return new ResponseEntity<>(username + " This is a restricted message!", HttpStatus.OK);
     }
 }

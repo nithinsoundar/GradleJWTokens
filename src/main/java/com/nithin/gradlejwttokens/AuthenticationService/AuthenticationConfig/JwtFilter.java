@@ -13,11 +13,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
 import java.io.IOException;
+import java.util.function.Function;
 
 @Component
 @RequiredArgsConstructor
 public class JwtFilter extends GenericFilterBean {
 
+    String secret = "6A576E5A7234753778214125442A472D4B6150645367556B5870327335763879";
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
@@ -30,7 +32,7 @@ public class JwtFilter extends GenericFilterBean {
             final String token = authHeader.substring(7);
             Claims claims = Jwts
                     .parser()
-                    .setSigningKey("6A576E5A7234753778214125442A472D4B6150645367556B5870327335763879")
+                    .setSigningKey(secret)
                     .parseClaimsJws(token)
                     .getBody();
             request.setAttribute("claims", claims);
@@ -39,4 +41,5 @@ public class JwtFilter extends GenericFilterBean {
         filterChain.doFilter(request, response);
 
     }
+
 }

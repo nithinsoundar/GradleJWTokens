@@ -1,4 +1,4 @@
-package com.nithin.gradlejwttokens.AuthenticationService.User;
+package com.nithin.gradlejwttokens.AuthenticationService.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,4 +20,5 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private Role role;
 }

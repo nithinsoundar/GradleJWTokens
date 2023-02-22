@@ -1,6 +1,6 @@
 package com.nithin.gradlejwttokens.AuthenticationService.repository;
 
-import com.nithin.gradlejwttokens.AuthenticationService.User.User;
+import com.nithin.gradlejwttokens.AuthenticationService.Model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

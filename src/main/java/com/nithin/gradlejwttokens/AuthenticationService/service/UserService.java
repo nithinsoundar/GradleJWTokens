@@ -1,6 +1,6 @@
 package com.nithin.gradlejwttokens.AuthenticationService.service;
 
-import com.nithin.gradlejwttokens.AuthenticationService.User.User;
+import com.nithin.gradlejwttokens.AuthenticationService.Model.User;
 import com.nithin.gradlejwttokens.AuthenticationService.exception.UserNotFoundException;
 import org.springframework.stereotype.Service;
 
