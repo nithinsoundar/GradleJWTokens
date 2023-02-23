@@ -30,28 +30,6 @@ import java.util.stream.Collectors;
 public class JwtFilter extends OncePerRequestFilter {
 
     String secret = "6A576E5A7234753778214125442A472D4B6150645367556B5870327335763879";
-   /* @Override
-    public void doFilter(ServletRequest servletRequest,
-                         ServletResponse servletResponse,
-                         FilterChain filterChain)
-            throws IOException, ServletException {
-        final HttpServletRequest request = (HttpServletRequest) servletRequest;
-        final HttpServletResponse response = (HttpServletResponse) servletResponse;
-        final String authHeader = request.getHeader("Authorization");
-        if (authHeader != null && authHeader.startsWith("Bearer ")){
-            final String token = authHeader.substring(7);
-            Claims claims = Jwts
-                    .parser()
-                    .setSigningKey(secret)
-                    .parseClaimsJws(token)
-                    .getBody();
-            request.setAttribute("claims", claims);
-            request.setAttribute("blog", servletRequest.getParameter("id"));
-        }
-        filterChain.doFilter(request, response);
-
-    }*/
-
 
 @Override
     protected void doFilterInternal(HttpServletRequest request,

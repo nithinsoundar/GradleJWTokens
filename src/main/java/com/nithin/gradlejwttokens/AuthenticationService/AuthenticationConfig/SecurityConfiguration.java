@@ -24,12 +24,13 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/api/v1/user/update/{id}").authenticated()
                 .requestMatchers("/api/v1/user/**", "/api/v1/blog/unrestricted").permitAll()
                 /*.requestMatchers("/api/v1/blog/restricted").hasRole("ADMIN")*/
                 .anyRequest().authenticated()
-                /*.and()
+                .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)*/
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

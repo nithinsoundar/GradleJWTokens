@@ -23,7 +23,7 @@ public class JwtService {
     @Value("${app.token.message}")
     private String message;
 
-    public String  generateToken(LoginCreds loginCreds) {
+    public Map<String, String>  generateToken(LoginCreds loginCreds) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", loginCreds.getRole());
         String token =  Jwts.builder()
@@ -33,10 +33,10 @@ public class JwtService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
-        /*Map<String, String> jwTokenGen = new HashMap<>();
+        Map<String, String> jwTokenGen = new HashMap<>();
         jwTokenGen.put("token", token);
-        jwTokenGen.put("message", message);*/
-        return token;
+        jwTokenGen.put("message", message);
+        return jwTokenGen;
 
 
         /*List<String> authorities = Arrays.asList(String.valueOf(loginCreds.getRole()));
