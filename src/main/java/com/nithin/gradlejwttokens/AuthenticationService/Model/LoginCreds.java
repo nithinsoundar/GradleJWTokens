@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class LoginCreds {
     private String username;
     private String password;
-    @Field("role")
     private Role role;
 
 
