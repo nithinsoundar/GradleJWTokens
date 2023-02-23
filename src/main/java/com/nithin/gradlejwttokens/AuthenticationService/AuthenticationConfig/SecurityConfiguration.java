@@ -24,9 +24,9 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/user/update/{id}").authenticated()
+                .requestMatchers("/api/v1/user/update/{id}").hasRole("ADMIN")
                 .requestMatchers("/api/v1/user/**", "/api/v1/blog/unrestricted").permitAll()
-                /*.requestMatchers("/api/v1/blog/restricted").hasRole("ADMIN")*/
+                .requestMatchers("/api/v1/blog/restricted").authenticated()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()

@@ -44,14 +44,12 @@ public class JwtFilter extends OncePerRequestFilter {
                 Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
                 String username = claims.getSubject();
 
-                Object authoritiesObj = claims.get("role");
+                Object authoritiesObj = claims.get("authorities");
                 List<String> authorities = null;
                 if (authoritiesObj instanceof String) {
                     authorities = Collections.singletonList((String) authoritiesObj);
-                    System.out.println(authorities);
                 } else if (authoritiesObj instanceof List) {
                     authorities = (List<String>) authoritiesObj;
-                    System.out.println(authorities);
                 } else {
                     System.out.println("authorities error");
                 }
