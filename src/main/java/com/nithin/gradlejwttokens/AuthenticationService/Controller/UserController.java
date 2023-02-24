@@ -83,4 +83,9 @@ public class UserController {
 
         return ResponseEntity.ok(userData);
     }
+
+    @GetMapping(path = "/{id}")
+    public User getUserById(@PathVariable String id) throws UserNotFoundException {
+        return userService.getUserById(id);
+    }
 }

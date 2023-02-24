@@ -37,24 +37,5 @@ public class JwtService {
         jwTokenGen.put("token", token);
         jwTokenGen.put("message", message);
         return jwTokenGen;
-
-
-        /*List<String> authorities = Arrays.asList(String.valueOf(loginCreds.getRole()));
-
-        = List.of(new SimpleGrantedAuthority(String.valueOf(loginCreds.getRole())));
-        Claims claims = Jwts.claims().setSubject(loginCreds.getUsername());
-        claims.put("authorities", authorities.stream().map(s -> new
-        SimpleGrantedAuthority(s.getAuthority())).collect(Collectors.toList()));
-*/
-        /*String jwtToken = Jwts.builder()
-                .setSubject(loginCreds.getUsername())
-                .claim("authorities", authorities)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
-                .compact();*/
-
-
     }
 }
