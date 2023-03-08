@@ -5,7 +5,10 @@ import com.nithin.gradlejwttokens.AuthenticationService.Model.User;
 import com.nithin.gradlejwttokens.AuthenticationService.exception.UserNotFoundException;
 import com.nithin.gradlejwttokens.AuthenticationService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.nithin.gradlejwttokens.AuthenticationService.config.PasswordUtils.encodePassword;
 
@@ -59,5 +62,12 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException("Invalid id and password");
         }
         return user;
+    }
+    public List<User> listAll() {
+        return userRepository.findAll(Sort.by("username").ascending());
+    }
+
+    public List<User> listAllAdmins(){
+        return userRepository.findAllUserByRole(Role.ADMIN);
     }
 }

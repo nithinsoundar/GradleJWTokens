@@ -18,6 +18,6 @@ public class AuthenticationController {
     }
     @GetMapping("/restricted")
     public ResponseEntity<?> getRestrictedMessage(String username) {
-        return new ResponseEntity<>(username + " This is a restricted message!", HttpStatus.OK);
+        return new ResponseEntity<>(" This is a restricted message!", HttpStatus.OK);
     }
 }

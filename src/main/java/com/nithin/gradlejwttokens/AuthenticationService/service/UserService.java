@@ -5,6 +5,8 @@ import com.nithin.gradlejwttokens.AuthenticationService.Model.User;
 import com.nithin.gradlejwttokens.AuthenticationService.exception.UserNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface UserService {
     public void saveUser(User user);
@@ -15,4 +17,6 @@ public interface UserService {
     User getUserByUsername(String username) throws UserNotFoundException;
 
     User getUserById(String id) throws UserNotFoundException;
+    List<User> listAll();
+    List<User> listAllAdmins();
 }
